@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
@@ -41,6 +41,10 @@ gem 'devise'
 gem 'cancan'
 
 gem 'carrierwave'
+
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+
+gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 
 gem 'rails_admin'
 

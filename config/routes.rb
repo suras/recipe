@@ -1,4 +1,24 @@
 Rails.application.routes.draw do
+  
+
+  get "/ingredients_search", to: "ingredients#ingredients_search"
+
+  get "/workflows_search", to: "workflows#workflows_search"
+
+
+  resources :cards
+
+  resources :steps
+
+  resources :recipe_items
+
+  resources :workflows
+
+  resources :ingredients
+
+  devise_for :users
+  
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

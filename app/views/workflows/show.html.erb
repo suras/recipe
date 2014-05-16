@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @workflow.name %>
+</p>
+
+<p>
+  <strong>Ext image url:</strong>
+  <%= @workflow.ext_image_url %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @workflow.image %>
+</p>
+
+<%= link_to 'Edit', edit_workflow_path(@workflow) %> |
+<%= link_to 'Back', workflows_path %>
