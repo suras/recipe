@@ -6,8 +6,7 @@ class Card
   field :c_order, type: Integer
    
   # relations
-  belongs_to :step
-  has_and_belongs_to_many :ingredients
-  has_and_belongs_to_many :workflow
+  embedded_in :step
+
 
 end

@@ -67,6 +67,10 @@ class StepsController < ApplicationController
       @step = Step.find(params[:id])
     end
 
+    def set_recipe
+      @recipe_item = RecipeItem.find(params[:id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def step_params
       params.require(:step).permit(:recipe_item_id, :comment)

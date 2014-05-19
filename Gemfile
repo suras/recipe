@@ -58,6 +58,8 @@ gem 'rails-api'
 
 gem 'factory_girl'
 
+gem 'kaminari'
+
 group :development, :test do
   gem 'spring-commands-rspec'
   gem 'rspec-rails'

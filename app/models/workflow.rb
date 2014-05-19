@@ -7,5 +7,4 @@ class Workflow
   field :image, type: String
   
   # relations
-  has_and_belongs_to_many :cards
 end

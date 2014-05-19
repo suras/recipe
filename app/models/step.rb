@@ -4,7 +4,8 @@ class Step
   field :comment, type: String
 
   # relations
-  belongs_to :recipe_item
-  has_many :cards
+  embedded_in :recipe_item
+  embeds_many :cards
+  accepts_nested_attributes_for :cards
 
 end
