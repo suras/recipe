@@ -52,6 +52,12 @@ gem 'mongoid', github: 'mongoid/mongoid'
 
 gem 'bson_ext'
 
+gem "active_model_serializers"
+
+gem 'rails-api'
+
+gem 'factory_girl'
+
 group :development, :test do
   gem 'spring-commands-rspec'
   gem 'rspec-rails'

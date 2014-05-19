@@ -37,6 +37,7 @@ class User
   # field :locked_at,       type: Time
 
   # relations
-  has_many :recipe_items
+  # has_many :recipe_items
+   embeds_many :recipe_items
 
 end

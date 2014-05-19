@@ -5,6 +5,7 @@ class WorkflowsController < ApplicationController
   # GET /workflows.json
   def index
     @workflows = Workflow.all
+    render json: @ingredients
   end
 
   # GET /workflows/1
@@ -61,7 +62,7 @@ class WorkflowsController < ApplicationController
     end
   end
 
-  
+
   # GET /workflow_search
   def workflows_search
     render json: Workflow.search(params[:q])
