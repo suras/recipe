@@ -1,6 +1,6 @@
 class Api::V1::RecipeItemsController < Api::V1::BaseController
   before_action :set_recipe_item, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /recipe_items.json
   def index
@@ -18,7 +18,7 @@ class Api::V1::RecipeItemsController < Api::V1::BaseController
 
   # POST /recipe_items.json
   def create
-    @recipe_item = RecipeItem.new(recipe_item_params)
+    @recipe_item = current_user.recipe_items.new(recipe_item_params)
     if @recipe_item.save
       render json: @recipe_item
     else

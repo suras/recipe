@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  devise_for :users
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   namespace :api do
@@ -24,8 +26,6 @@ Rails.application.routes.draw do
 
       resources :ingredients
 
-      devise_for :users
-   
     end
   
   end

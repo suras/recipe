@@ -1,6 +1,6 @@
 class RecipeItemsController < ApplicationController
   before_action :set_recipe_item, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /recipe_items
   # GET /recipe_items.json
   def index
@@ -24,7 +24,7 @@ class RecipeItemsController < ApplicationController
   # POST /recipe_items
   # POST /recipe_items.json
   def create
-    @recipe_item = RecipeItem.new(recipe_item_params)
+    @recipe_item = current_user.recipe_items.new(recipe_item_params)
 
     respond_to do |format|
       if @recipe_item.save

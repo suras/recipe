@@ -56,14 +56,13 @@ gem "active_model_serializers"
 
 gem 'rails-api'
 
-gem 'factory_girl'
-
 gem 'kaminari'
 
 group :development, :test do
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
   gem 'guard-rspec'
+  gem 'factory_girl_rails'
   gem 'mongoid-rspec'
   gem 'rack-test'
   gem 'database_cleaner'

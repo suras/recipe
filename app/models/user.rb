@@ -63,6 +63,16 @@ class User
       self.auth_token = generate_authentication_token
     end
   end
+ 
+
+  # mongoid devise session issue for rails 4.1 fix
+  # https://github.com/plataformatec/devise/issues/2949
+  class << self
+    def serialize_from_session(key, salt)
+      record = to_adapter.get(key.to_s)
+      record if record && record.authenticatable_salt == salt
+    end
+  end
 
 
   private
