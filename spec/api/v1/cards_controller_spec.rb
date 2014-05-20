@@ -18,8 +18,8 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe CardsController do
-
+describe Api::V1::CardsController do
+  include RSpec::Rails::ControllerExampleGroup
   # This should return the minimal set of attributes required to create a valid
   # Card. As you add validations to Card, be sure to
   # adjust the attributes here as well.

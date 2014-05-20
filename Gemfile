@@ -64,6 +64,9 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
   gem 'guard-rspec'
+  gem 'mongoid-rspec'
+  gem 'rack-test'
+  gem 'database_cleaner'
   # gem 'rb-fsevent' if `uname` =~ /Darwin/ for mac
 end
 

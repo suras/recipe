@@ -1,5 +1,9 @@
 class Step
   include Mongoid::Document
+  include Mongoid::Timestamps::Created
+  include Mongoid::Timestamps::Updated
+
+  # fields
   field :recipe_item_id, type: Integer
   field :comment, type: String
 

@@ -1,16 +1,22 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps::Created
+  include Mongoid::Timestamps::Updated
+
+  before_save :ensure_authentication_token
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # fields
   ## Database authenticatable
   field :first_name,         type: String, default: ""
   field :last_name,         type: String, default: ""
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
-
+  field :auth_token, type: String
   ## Recoverable
   field :reset_password_token,   type: String
   field :reset_password_sent_at, type: Time
@@ -38,5 +44,34 @@ class User
 
   # relations
   has_many :recipe_items
+
+  # methods
+
+  def self.create_or_find_by_email_and_password(email, password)
+    user = User.where(email: email).first
+    if(user.present?)
+      return user if user.valid_password?(password)
+      return false
+    else
+      user = User.create!(email: email, password: password)
+      return user
+    end
+  end
+
+  def ensure_authentication_token
+    if auth_token.blank?
+      self.auth_token = generate_authentication_token
+    end
+  end
+
+
+  private
+    
+    def generate_authentication_token
+      loop do
+        token = Devise.friendly_token
+        break token unless User.where(auth_token: token).first
+      end
+    end
 
 end

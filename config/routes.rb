@@ -6,10 +6,11 @@ Rails.application.routes.draw do
     
     namespace :v1, defaults:{format: 'json'} do
       
-      get "/ingredients_search", to: "ingredients#ingredients_search"
+      get '/ingredients_search', to: 'ingredients#ingredients_search'
 
-      get "/workflows_search", to: "workflows#workflows_search"
+      get '/workflows_search', to: 'workflows#workflows_search'
 
+      post '/create_user', to: 'authentications#create_user'
 
       resources :recipe_items do
         
