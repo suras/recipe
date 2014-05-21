@@ -4,7 +4,6 @@ class Card
   include Mongoid::Timestamps::Updated
 
   # fields
-  field :step_id, type: Integer
   field :c_id, type: Integer
   field :c_type, type: String
   field :c_order, type: Integer
