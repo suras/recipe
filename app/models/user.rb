@@ -65,6 +65,12 @@ class User
     end
   end
  
+  def send_password_reset
+    self.reset_password_token =  SecureRandom.random_number(88888888)
+    self.reset_password_sent_at = Time.zone.now
+    save!
+    # Notifier.password_reset(self).deliver
+  end
 
   # mongoid devise session issue for rails 4.1 fix
   # https://github.com/plataformatec/devise/issues/2949
@@ -74,7 +80,6 @@ class User
       record if record && record.authenticatable_salt == salt
     end
   end
-
 
   private
     

@@ -11,8 +11,30 @@ Rails.application.routes.draw do
       get '/ingredients_search', to: 'ingredients#ingredients_search'
 
       get '/workflows_search', to: 'workflows#workflows_search'
+      
+      # users routes
 
       post '/create_user', to: 'authentications#create_user'
+
+      get '/user_profile', to: 'users#user_profile'
+
+      match "/users" => 'users#update', via: [:put, :patch]
+      
+      delete '/users', to: 'users#destroy'
+
+      get '/users', to: 'users#show'
+
+      get '/password_reset', to: 'users#send_password_reset'
+
+      post '/password_reset', to: 'users#reset_password'
+
+      # recipe items
+       
+      match "/recipe_items" => "recipe_items#update", via: [:put, :patch]
+
+      delete '/recipe_items', to: 'recipe_items#destroy'
+      
+      get '/recipe_items', to: 'recipe_items#show'
 
       resources :recipe_items do
         

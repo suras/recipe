@@ -1,4 +1,4 @@
-class Api::V1::WorkflowsController < ApplicationController
+class Api::V1::WorkflowsController < Api::V1::BaseController
   before_action :set_workflow, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 

@@ -4,7 +4,7 @@ class RecipeItem
   include Mongoid::Timestamps::Updated
 
   #fields
-  field :user_id, type: BSON::ObjectId
+  #field :user_id, type: BSON::ObjectId
   field :name, type: String
 
   belongs_to :user

@@ -43,7 +43,7 @@ class Api::V1::IngredientsController < Api::V1::BaseController
   # DELETE /ingredients/1.json
   def destroy
     @ingredient.destroy
-    render json: { head :no_content }
+    render json: { head: :no_content }
   rescue => e
      render json: {error_code: Code[:error_rescue], error_message: e.message}, status: Code[:status_error]
   end

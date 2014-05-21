@@ -1,6 +1,7 @@
 class Api::V1::RecipeItemsController < Api::V1::BaseController
-  before_action :set_recipe_item, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_recipe_item, only: [:show]
+  before_action :set_user_recipe_item, only: [:update, :destroy]
 
   # GET /recipe_items.json
   def index
@@ -51,6 +52,10 @@ class Api::V1::RecipeItemsController < Api::V1::BaseController
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe_item
       @recipe_item = RecipeItem.find(params[:id])
+    end
+
+    def set_user_recipe_item
+      @recipe_item = current_user.recipe_items.where(id: params[:id]).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
