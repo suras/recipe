@@ -1,6 +1,6 @@
 class Api::V1::WorkflowsController < Api::V1::BaseController
   before_action :set_workflow, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :workflows_search]
 
   # GET /workflows.json
   def index
@@ -19,7 +19,7 @@ class Api::V1::WorkflowsController < Api::V1::BaseController
 
   # POST /workflows.json
   def create
-    @workflow = Workflow.new(workflow_params)
+    @workflow = current_user.workflows.new(workflow_params)
     if @workflow.save
       render json: @workflow 
     else
@@ -43,7 +43,7 @@ class Api::V1::WorkflowsController < Api::V1::BaseController
   # DELETE /workflows/1.json
   def destroy
     @workflow.destroy
-    render json: { head :no_content }
+    render json: { head: :no_content }
   rescue => e
      render json: {error_code: Code[:error_rescue], error_message: e.message}, status: Code[:status_error]
   end

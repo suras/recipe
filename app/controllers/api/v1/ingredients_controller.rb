@@ -1,6 +1,6 @@
 class Api::V1::IngredientsController < Api::V1::BaseController
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :ingredients_search]
 
   # GET /ingredients.json
   def index
@@ -19,7 +19,7 @@ class Api::V1::IngredientsController < Api::V1::BaseController
 
   # POST /ingredients.json
   def create
-    @ingredient = Ingredient.new(ingredient_params)
+    @ingredient = current_user.ingredients.new(ingredient_params)
     if @ingredient.save
       render json: @ingredient
     else

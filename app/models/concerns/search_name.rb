@@ -1,9 +1,7 @@
 module SearchName
   
-  extend ActiveSupport::Concern
-
-  def self.search(q)
-    self.find(:all, :conditions => {:name => /.*#{q}.*/i})
+  def search(q)
+  	self.any_of({ :name => /.*#{q}.*/i })
   end
 
 end

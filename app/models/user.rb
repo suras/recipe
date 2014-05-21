@@ -45,6 +45,8 @@ class User
   # relations
   has_many :recipe_items
   has_many :authentications, dependent: :delete
+  has_many :ingredients
+  has_many :workflows
 
   # methods
 

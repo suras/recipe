@@ -25,7 +25,7 @@ class WorkflowsController < ApplicationController
   # POST /workflows
   # POST /workflows.json
   def create
-    @workflow = Workflow.new(workflow_params)
+    @workflow = current_user.workflows.new(workflow_params)
 
     respond_to do |format|
       if @workflow.save
