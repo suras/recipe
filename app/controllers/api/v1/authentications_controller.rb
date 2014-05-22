@@ -19,7 +19,7 @@ class Api::V1::AuthenticationsController <  Api::V1::BaseController
     authentication = Authentication.where(:uid => uid, :provider => "facebook").first
     user = authentication.present? ? User.find(authentication.user_id) : false
     unless user.present?
-      user = User.find_by(email: fbuser.email) 
+      user = User.where(email: fbuser.email).first
       user = user.present? ? user : User.new
       unless user.persisted?
         user.email = fbuser.email
@@ -46,7 +46,7 @@ class Api::V1::AuthenticationsController <  Api::V1::BaseController
     authentication = Authentication.where(:uid =>  google.raw_info["id"], :provider => "google").first
     user = authentication.present? ? User.find(authentication.user_id) : false
     unless user.present?
-      user = User.find_by(email: google.info[:email]) 
+      user = User.where(email: google.info[:email]).first 
       user = user.present? ? user : User.new
       unless user.persisted?
         user.email = google.info[:email]
@@ -60,7 +60,7 @@ class Api::V1::AuthenticationsController <  Api::V1::BaseController
       user.authentications.create!(:provider => "google", :uid =>  google.raw_info["id"], :token => params[:access_token])
     end
       render json: user 
-  rescue => e
+   rescue => e
        render json: {error_code: Code[:error_rescue], error_message: e.message}, status: Code[:status_error]
   end
 

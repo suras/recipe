@@ -13,10 +13,12 @@ class User
   # fields
   ## Database authenticatable
   field :first_name,         type: String, default: ""
-  field :last_name,         type: String, default: ""
+  field :last_name,          type: String, default: ""
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
+  field :ext_image,         type: String 
   field :auth_token, type: String
+  field :confirmed_at, type: Time
   ## Recoverable
   field :reset_password_token,   type: String
   field :reset_password_sent_at, type: Time

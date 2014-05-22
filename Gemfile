@@ -58,6 +58,12 @@ gem 'rails-api'
 
 gem 'kaminari'
 
+gem 'omniauth-facebook'
+
+gem "omniauth-google-oauth2"
+
+gem "oauth2"
+
 group :development, :test do
   gem 'spring-commands-rspec'
   gem 'rspec-rails'

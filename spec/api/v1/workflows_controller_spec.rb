@@ -18,5 +18,4 @@ describe "Workflows API", :type => :api do
     json[0]["name"].should eql(@workflow.name)
   end
 
- 
 end

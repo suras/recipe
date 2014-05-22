@@ -1,11 +1,12 @@
 class Api::V1::StepsController < Api::V1::BaseController
-  before_action :set_step, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_recipe
+  before_action :set_step, only: [:show, :edit, :update, :destroy]
+
 
   # GET /steps.json
   def index
-    @steps = Step.all
+    @steps = @recipe_item.steps.all
   rescue => e
     render json: {error_code: Code[:error_rescue], error_message: e.message}, status: Code[:status_error]
   end
@@ -51,7 +52,7 @@ class Api::V1::StepsController < Api::V1::BaseController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_step
-      @step = Step.find(params[:id])
+      @step = @recipe_item.steps.find(params[:id])
     end
 
     def set_recipe

@@ -36,11 +36,15 @@ Rails.application.routes.draw do
       
       get '/recipe_items', to: 'recipe_items#show'
 
-      resources :recipe_items do
+      get '/steps', to: 'steps#show'
+
+      delete '/steps', to: 'steps#destroy'
+
+      match "/steps" => "steps#update", via: [:put, :patch]
+
+      resources :recipe_items
         
-        resources :steps
-      
-      end
+      resources :steps
      
       resources :cards
        
