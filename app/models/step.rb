@@ -5,6 +5,7 @@ class Step
 
   # fields
   field :comment, type: String
+  field :s_order, type: String
 
   # relations
   embedded_in :recipe_item
